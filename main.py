@@ -27,7 +27,7 @@ def qa():
         chat=mongo.db.chats.find_one({"question":question})
         print(chat)
         if chat:
-            # data={"result":f"{chat['answer']}"}
+            
             data = {"question": question, "answer": f"{chat['answer']}"}
             return jsonify(data)
         else:
@@ -42,9 +42,7 @@ def qa():
                     presence_penalty=0,
                 )
                 print(response)
-                # data={"question":question,"answer":response}
                 data = {"question": question, "answer": response["choices"][0]["text"]}
-                # mongo.db.chats.insert_one({"question":question,"answer":response})
                 mongo.db.chats.insert_one({"question": question, "answer": response["choices"][0]["text"]})
                 return jsonify(data)
             
