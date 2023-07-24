@@ -3,8 +3,7 @@ from flask_pymongo import PyMongo
 import openai
 
 
-# openai.api_key = "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"
-openai.api_key = "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"
+openai.api_key = "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"
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb+srv://riddhi19:hellfire123@clonedb.modwzr6.mongodb.net/chatgpt"
