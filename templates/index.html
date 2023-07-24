@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>New Chat</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/input.css">
+    <link rel="shortcut icon" href="https://chat.openai.com/favicon.ico" type="image/x-icon">
+    <style>
+        .right2{
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-chat_black-50">
+    <div class="flex h-[100vh] text-white">
+    <div class="left bg-left_color-50 w-2/12">
+         <div class="new_chats flex justify-center items-center">
+            <button class="hov py-3 my-2 px-4 space-x-2 border-gray-700 border rounded-md flex justify-start items-center" style="width: 90%;">
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+            stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <div>New Chat</div>
+         </button>  
+        </div>
+
+        <span class="text-xs mx-4" style="color: #8e8ea0;">Today</span>
+        <div class="chats flex flex-col justify-center items-start mt-5 py-2 " style="font-size: 0.8rem;">
+            
+            {% for chat in mychats %}
+            
+            <div class="chat chats_hov space-x-3 py-3 px-4 mx-4 flex justify-start items-center rounded-md " style="cursor: pointer; width: 90%;">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span >{{chat.question}}</span>
+            </div>
+            {% endfor %}
+            
+        
+        </div>
+
+        <!-- <div class="flex justify-center items-center space-x-0 fixed bottom-0">
+            <button class=" chats_hov justify-center items-center rounded-md mx-4 py-3 text-sm hover:bg-gray-800" type="button">
+            <div class="flex justify-center items-center px-10 py-1 text-white">abc@gmail.com</div>
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 flex-shrink-0 text-gray-500" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+            </button>
+        </div>
+         -->
+    </div>
+        <div class="right1 w-10/12 flex justify-center items-center flex-col">
+            <div class="text-center w-full text-3xl font-bold my-10 ">
+                ChatGPT
+            </div>
+        
+        <div class="itemsrow flex py-4 w-[43vw] justify-around">
+            <div class="examples flex flex-col justify-center items-center">
+                <svg stroke="currentColor" fill="none" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <div class="py-4 ">Examples</div>
+                <button class="bg-white/5 hover:bg-left_color-50 w-[16vw] text-xs  py-1 px-4 mx-4 my-2 rounded-md">Explain quantum computing in simple terms</button>
+                <button class="bg-white/5 hover:bg-left_color-50 w-[16vw] text-xs  py-1 px-4 mx-4 my-2 rounded-md">Got any creative ideas for a 10 year old’s birthday?</button>
+                <button class="bg-white/5 hover:bg-left_color-50 w-[16vw] text-xs  py-1 px-4 mx-4 my-2 rounded-md">How do I make an HTTP request in Javascript?</button>
+            </div>
+            <div class="capable flex flex-col justify-center items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path></svg>
+                <div class="py-4">capabilities</div>
+                <button class="bg-white/5 hover:bg-left_color-50 w-[16vw] text-xs  py-1 px-4 mx-4 my-2 rounded-md">Remembers what user said earlier in the conversation</button>
+                <button class="bg-white/5 hover:bg-left_color-50 w-[16vw] text-xs py-1 px-4 mx-4 my-2 rounded-md">Allows user to provide follow-up corrections</button>
+                <button class="bg-white/5 hover:bg-left_color-50 w-[16vw] text-xs py-1 px-4 mx-4 my-2 rounded-md">Trained to decline inappropriate requests</button>
+            </div>
+            <div class="limit flex flex-col justify-center items-center">
+                <svg stroke="currentColor" fill="none" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <div class="py-4">Limitations</div>
+                <button class="bg-white/5 hover:bg-left_color-50 w-[16vw] text-xs  py-1 px-4 mx-4 my-2 rounded-md">May occasionally generate incorrect information</button>
+                <button class="bg-white/5 hover:bg-left_color-50 w-[16vw] text-xs  py-1 px-4 mx-4 my-2 rounded-md">May occasionally produce harmful instructions or biased content</button>
+                <button class="bg-white/5 hover:bg-left_color-50 w-[16vw] text-xs  py-1 px-4 mx-4 my-2 rounded-md">Limited knowledge of world and events after 2021</button>
+            </div>
+        </div>
+        
+        <div class="input w-full text-center items-center justify-center flex-col my-20">
+            
+            <input id="question" class="bg-white/5 w-[60%] py-3 px-4 rounded-md" placeholder="Send a message">
+            <button type="submit" id="sendButton" onclick="right1Send()" class="relative -left-20 pl-10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" class="h-4 w-4 m-1 md:m-0" stroke-width="2"><path d="M.5 1.163A1 1 0 0 1 1.97.28l12.868 6.837a1 1 0 0 1 0 1.766L1.969 15.72A1 1 0 0 1 .5 14.836V10.33a1 1 0 0 1 .816-.983L8.5 8 1.316 6.653A1 1 0 0 1 .5 5.67V1.163Z" fill="currentColor"></path></svg>
+            </button>
+            
+            <div class="text-xs py-3 pr-11 opacity-75">ChatGPT clone- By Riddhi Sonawane</div>
+        </div>
+        </div>
+        <div class="right2  w-full flex flex-col justify-center items-center" style="height: fit-content; font-size: 0.8rem;">
+            <div class="box1 flex justify-start items-center space-x-4 py-4" style="width: 43vw;margin: auto;">
+                <img class="w-9" style="width: 3vw;" src="https://chat.openai.com/_next/image?url=https%3A%2F%2Fs.gravatar.com%2Favatar%2F73691c8d6c625311af4866911b713942%3Fs%3D480%26r%3Dpg%26d%3Dhttps%253A%252F%252Fcdn.auth0.com%252Favatars%252Fri.png&w=48&q=75" alt=""> 
+                <div id="queAsked">What is color of sky?</div>
+            </div>
+            <div class="box2 flex justify-center bg_answer items-center  space-x-4 py-4" style="width: 100%; margin: auto;">
+                <div class="box w-[43vw] flex justify-start space-x-4">
+                <img class="w-9 h-9" style="width: 3vw;" src="https://chat.openai.com/favicon.ico" alt=""> 
+                <div class="flex flex-col space-y-1">
+                    <div id="queAns" >Loading..</div>
+                    <div id="answer">Loading...</div>
+                </div>
+                </div>
+            </div>
+
+            <div class="input w-full text-center items-center justify-center flex-col mt-9 mx-5 pl-10 -mb-7 " style="padding-top: 21rem;">
+                <input id="question2" class="bg-white/5 w-[60%] py-4 px-4 rounded-md" placeholder="Send a message">
+                <button id="sendButton2" onclick="right2Send()" class="relative -left-20 pl-10 text-send">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" class="h-4 w-4 m-1 md:m-0" stroke-width="2"><path d="M.5 1.163A1 1 0 0 1 1.97.28l12.868 6.837a1 1 0 0 1 0 1.766L1.969 15.72A1 1 0 0 1 .5 14.836V10.33a1 1 0 0 1 .816-.983L8.5 8 1.316 6.653A1 1 0 0 1 .5 5.67V1.163Z" fill="currentColor"></path></svg>
+                </button>
+                <div class="text-xs py-3 pr-11 opacity-75">Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts. ChatGPT May 24 Version</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" >
+        async function postData(url = "", data = {}) {
+         const response = await fetch(url, {
+        method: "POST", 
+         headers: {
+             "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+        async function right1Send(){
+            
+            questionVar = document.getElementById("question").value
+            document.getElementById("question").value=""
+            document.querySelector(".right2").style.display="block"
+            document.querySelector(".right1").style.display="none"
+            document.getElementById("queAns").innerHTML=questionVar
+            document.getElementById("queAsked").innerHTML=questionVar
+           let result= await postData("/api",{"question":questionVar})
+           document.getElementById("answer").innerHTML=result.answer
+        }
+
+        function right2Send(){
+            
+            questionVar = document.getElementById("question2").value
+            document.getElementById("question2").value=""
+            // document.querySelector(".right2").style.display="block"
+            // document.querySelector(".right1").style.display="none"
+            document.getElementById("queAns").innerHTML=questionVar
+            document.getElementById("queAsked").innerHTML=questionVar
+        }
+
+      
+    </script>
+</body>
+</html>
